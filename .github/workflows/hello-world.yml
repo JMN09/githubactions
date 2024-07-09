@@ -1,0 +1,19 @@
+name: hello-world 
+# Each workflow file must incorporate at least one triggering event to be executed
+# these events encompass many github actions, pull request, issue commenting, even the succesful execution of another workflow
+# you can execute the workflow from an api
+
+on: push #whenever you push a commit or tag, or create a repo froma  template you trigger this event
+  #Now we define what we want to happen after pushes, which we do by defining jobs
+  #Each workflow has one or more jobs, each composed of a sequence of steps
+jobs:
+  hello-world-job:
+    #We name the job, and then we need to specify the runner on which we would like the job to run
+    #There is two types of runners, a github runner and a self hosted runner  
+    runs-on: ubuntu-latest
+    # Next we need to specify the steps that compose this job
+    steps:
+      - name: check out repository code #allows your workflow to retrieve the contents of your repo
+        uses: actions/checkout@v4
+      - run: echo "$(cat hello_world.txt)"
+  
